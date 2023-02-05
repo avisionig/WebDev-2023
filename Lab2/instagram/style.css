@@ -1,0 +1,211 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    background: #fafafa;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    height: 110vh;
+    overflow-x: hidden;
+}
+#page{
+    display: flex;
+    margin-top: 5px;
+    height: 130vh;
+    margin-bottom: auto;
+}
+.phone img{
+    float: left;
+    height: 650px;
+    padding-top: 50px;
+    margin-left: 280px;
+    margin-right: -40px;
+}
+.right-side{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 40px;
+}
+
+.login-block{
+    background: white;
+    border: 1px solid #e6e6e6e6;
+    display: flex;
+    width: 340px;
+    margin-top: 20px ;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+.login-block .logo{
+    margin: 30px 0;
+    width: 110px;
+}
+.login-block input[type=text], .login-block input[type=password]{
+    height: 40px;
+    background: #f0f2f5;
+    margin: 8px 5px;
+    padding-left: 10px;
+    font-size: 11px;
+    width: 80%;
+    border: 1px solid #e6e6e6e6;
+}
+.login-block input[type=password]{
+    margin-bottom: 12px;
+}
+#login-button{
+    background: deepskyblue;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    width: 270px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+}
+#fb a{
+    font-weight: bold;
+    font-size: 13px;
+    color: darkslateblue;
+}
+#fb img{
+    width: 14px
+}
+#forgot{
+    margin: 15px 0px;
+    font-size: 11px;
+    color: darkslateblue;
+}
+.signup-block{
+    margin-top: 5px;
+    background: white;
+    border: 1px solid #e6e6e6e6;
+    display: flex;
+    width: 340px;
+    padding-top: 15px;
+    height: 50px;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+.signup-block p{
+    font-size: 12px;
+}
+.signup-block a{
+    font-weight: bold;
+    font-size: 13px;
+    color:deepskyblue;
+}
+.or{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15px;
+    margin: 15px 0 20px;
+}
+.or p{
+    color: #697681;
+    margin: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.line{
+    width: 112px;
+    height: 2px;
+    background: #efefef;
+}
+#get-app{
+    max-width: 350px;
+    text-align: center;
+}
+#get-app p{
+    font-size: 12px;
+    margin: 15px;
+}
+#google-play{
+    width: 110px;
+    height: 37px;
+}
+#micro-logo{
+    width: 100px;
+}
+
+footer{
+    color:#a6a8aa;
+    font-size: 11px;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    height: 0;
+    width: 100vw;
+    padding: 20px;
+    margin-top: auto;
+    justify-content: center;
+    word-spacing: 12px;
+    line-height: 20px;
+}
+footer ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+footer li a{
+    flex: 1px;
+    padding: 10px;
+    text-decoration: none;
+    color: inherit;
+}
+#bottom{
+    text-align: center;
+}
+
+@media screen and (max-width: 1100px) {
+    .phone{
+        left:70px;
+        margin-right: 22vw;
+        margin-left: -140px;
+    }
+    .right-side{
+        right: 30px;
+    }
+}
+@media screen and (max-width: 866px) {
+    body{
+        height: 150vh;
+    }
+    #page{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .phone{
+        display:none;
+    }
+    .right-side{
+        text-align: center;
+        left: 0;
+        margin-left: 200px;
+        margin-top: -50px;
+    }
+
+    .right-side{
+        position: relative;
+    }
+    footer{
+        position: absolute;
+        padding: 20px 120px;
+        width: 100vw;
+    }
+}

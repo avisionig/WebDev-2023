@@ -1,0 +1,215 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fff;
+    color: #000;
+    font-size: 15px;
+    line-height: 1.5;
+}
+#page{
+    margin-right: auto;
+    margin-left: auto;
+}
+a {
+    color: #262626;
+    text-decoration: none;
+}
+.logo{
+    width: 110px;
+}
+ul {
+    list-style: none;
+}
+
+.nav-main{
+    width: 90%;
+    max-width: 1200px;
+    margin-left: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 20px 0;
+    font-size: 13px;
+}
+.nav-main ul {
+    display: flex;
+}
+.nav-main ul li {
+    padding: 0 10px;
+}
+.nav-main ul li a {
+    padding-bottom: 2px;
+}
+.nav-menu ul li a:hover {
+    border-bottom: 2px solid #262626;
+}
+.nav-main ul.main-menu {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.right-menu li img{
+    width: 20px;
+}
+
+.main-photo{
+    width: 100%;
+    height: 80vh;
+    background-image: url(download.avif);
+    position: relative;
+    margin-bottom: -400px;
+}
+
+.photo-buttons{
+    max-width: 1000px;
+    z-index: 10;
+    font-size: 16px;
+    position: absolute;
+    top:45vh;
+    left:10vw;
+}
+.photo-buttons p{
+    margin: 20px 0;
+}
+.photo-buttons button{
+    width: 140px;
+    height: 40px;
+    color: white;
+    font-weight: bold;
+    background:#0067b8;
+    border-radius: 2px;
+    border: none;
+    margin-right: 20px;
+}
+.photo-buttons button:hover{
+    cursor: pointer;
+    background: #0067d8;
+}
+.photo-buttons a{
+    font-weight: bold;
+    font-size: 18px;
+}
+.family-link:hover {
+    text-decoration: underline;
+}
+.family-link:active{
+    border: 2px dashed black;
+}
+.photo-buttons a img{
+    margin-left: 5px;
+    width: 9px;
+}
+.mini-photos {
+    top:70vh;
+    margin-left: 35px;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    min-width: 1px;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    background-clip: border-box;
+}
+.card{
+    overflow-wrap:break-word;
+}
+.card img{
+    width: 280px;
+    height: 180px;
+    margin: 0px 5px;
+}
+.card p, .card h3, .card a{
+    margin-left: 5px;
+}
+.card a img{
+    width: 10px;
+    height: 10px;
+}
+.card a{
+    color: #0067b8;
+}
+.card a:hover{
+    text-decoration: underline;
+    color: #0067d8;
+}
+.card a:active{
+    border: 2px dashed #0067d8;
+}
+
+#secondary-menu{
+    top:80vh;
+    padding-left: 40px;
+    position: relative;
+    align-items: center;
+    align-content: center;
+    margin-bottom: 100px;
+}
+#secondary-menu img{
+    width: 1270px;
+}
+#up-button{
+    float: right;
+    position: relative;
+
+}
+footer{
+    top: 280vh;
+    color: #616161;
+    background-color: #f3f3f3;
+    font-size: 13px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-top: auto;
+    justify-content: center;
+}
+footer div{
+    padding-left: 30px;
+    display: flex;
+    background-color: #f3f3f3;
+    flex-direction: row;
+    line-height: 30px;
+}
+footer div ul{
+    margin: 10px 15px;
+}
+#bottom-footer{
+    margin: 0 0 0 10px;
+    font-size: 11px;
+}
+#bottom-footer a{
+    color:#616161;
+}
+#bottom-footer a:hover{
+    text-decoration: underline;
+    color: #a6a8aa;
+}
+#bottom-footer ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0 0 0 430px;
+    padding: 0
+}
+#bottom-footer li a{
+    flex: 1px;
+    padding: 10px;
+    text-decoration: none;
+    color: inherit;
+}
+#bottom-footer li a:hover{
+    text-decoration: underline;
+    color: #a6a8aa;
+}
+
+#bottom-footer a img{
+    width: 15px;
+}
