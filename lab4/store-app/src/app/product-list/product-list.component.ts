@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { products } from '../products';
+import {Product, products} from '../products';
 
 @Component({
   selector: 'app-product-list',
@@ -8,13 +8,12 @@ import { products } from '../products';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent {
-  products = products;
-
-  share(url : string) {
-    window.open(url, "_blank");
+  itemList: Product[] = products;
+  onDeleteItem(id:number){
+    this.itemList = this.itemList.filter((x) => x.id !== id);
   }
-  onNotify() {
-    window.alert('You will be notified when the product goes on sale');
+
+  ngOnInit():void{
   }
 }
 

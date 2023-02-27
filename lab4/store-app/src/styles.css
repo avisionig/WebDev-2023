@@ -140,4 +140,51 @@ app-top-bar h1 {
 mat-icon{
   color: orange;
 }
+app-product-list{
+  width: 100%;
+  text-align: center;
+}
+app-filter{
+  width: 100%;
+  text-align: center;
+}
+.list-block{
+  margin-left: 300px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 60%;
+}
 
+.item-block{
+  padding: 20px;
+  border: 1px solid #eeebeb;
+  margin: 30px;
+  width: 300px;
+  height: 400px;
+  align-self: center;
+}
+app-product-item img{
+  height: 100px;
+}
+app-product-item mat-icon{
+  color: gray;
+}
+.remove{
+  position: relative;
+  background: none;
+}
+app-product-list ul{
+  list-style: none;
+}
+app-product-list li{
+  margin: 0 10px;
+  display: inline;
+}
+#like-button{
+  margin: 10px;
+  height: 33px;
+}
+#like-button mat-icon{
+  color: red;
+}

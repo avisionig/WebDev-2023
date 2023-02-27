@@ -1,24 +1,12 @@
 <h2>Products</h2>
-
-<div *ngFor="let product of products">
-    <h3>
-        <a [title]="product.name + ' details'"
-           [routerLink]="['/products', product.id]">>
-            {{ product.name }}
-        </a>
-    </h3>
-    <p *ngIf="product.description">
-        Description: {{ product.description }}
-    </p>
-
-    <button type="button" (click)="share('https://t.me/share/url?url='+ product.link)">
-        Share
-    </button>
-
-
-    <app-product-alerts
-            [product]="product"
-            (notify)="onNotify()">
-    </app-product-alerts>
-
+<ul>
+    <li><button [routerLink]='["/category","Phone"]'> Phone</button></li>
+    <li><button [routerLink]='["/category","Game"]'> Game</button></li>
+    <li><button [routerLink]='["/category","Food"]'> Food</button></li>
+    <li><button [routerLink]='["/category","Laptop"]'> Laptop</button></li>
+</ul>
+<div class="list-block">
+    <div *ngFor="let item of itemList">
+        <app-product-item [item]="item" (remove)="onDeleteItem($event)"></app-product-item>
+    </div>
 </div>
