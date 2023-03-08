@@ -18,8 +18,11 @@ export class AlbumDetailComponent implements OnInit{
   renameAlbum(){
     const form = document.querySelector('input');
     if(form && form.value != ''){
-    this.album.title = form.value;
-    form.value = "";
+      this.album.title = form.value;
+      this.albumService.updateAlbum(this.album).subscribe((album) => {
+        this.album = album;
+      })
+      form.value = "";
     }
   }
   ngOnInit(): void {

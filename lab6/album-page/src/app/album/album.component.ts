@@ -13,6 +13,7 @@ export class AlbumComponent {
     this.albums = [];
   }
   deleteAlbum(album : Album){
+    this.albumService.deleteAlbum(album);
     this.albums = this.albums.filter((x)=> x.id !== album.id);
   }
   ngOnInit(){

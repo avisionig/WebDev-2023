@@ -16,6 +16,12 @@ export class AlbumService {
   }
 
   getAlbum(id: number): Observable<Album>{
-    return this.client.get<Album>(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    return this.client.get<Album>(`https://jsonplaceholder.typicode.com/albums/${id}`)
+  }
+  updateAlbum(album: Album):Observable<Album>{
+    return this.client.put<Album>(`https://jsonplaceholder.typicode.com/albums/${album.id}`, album)
+  }
+  deleteAlbum(album: Album): Observable<any>{
+    return this.client.delete(`https://jsonplaceholder.typicode.com/albums/${album.id}`)
   }
 }
