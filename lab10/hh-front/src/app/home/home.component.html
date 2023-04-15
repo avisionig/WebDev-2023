@@ -1,0 +1,15 @@
+<h1>Companies</h1>
+<ul>
+  <li *ngFor="let company of companies">
+    {{company.id}} - <a [routerLink]="['/companies',company.id]" (click)="onSelectedId(company.id)">{{company.name}}</a>
+  </li>
+</ul>
+
+<fieldset>
+  <label>Create Company:</label>
+  <input type="text" placeholder="Name" [(ngModel)]="newCompanyName">
+  <input type="text" placeholder="Description" [(ngModel)]="newCompanyDescription" >
+  <input type="text" placeholder="City"[(ngModel)]="newCompanyCity">
+  <input type="text" placeholder="Address"[(ngModel)]="newCompanyAddress">
+  <button (click)="addCompany()">Add Company</button>
+</fieldset>
