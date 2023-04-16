@@ -1,7 +1,7 @@
-import json
-
 from django.http import JsonResponse
 from api.models import Company, Vacancy, companies, vacancies
+from rest_framework import status
+from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from api.serializers import VacancySerializer
@@ -10,14 +10,14 @@ from api.serializers import VacancySerializer
 class VacancyList(APIView):
     def get(self, request, *args, **kwargs):
         serializer = VacancySerializer(vacancies(), many=True)
-        return JsonResponse(serializer.data, safe=False, status=200)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def put(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         serializer = VacancySerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse(serializer.data, status=201)
-        return JsonResponse({'error': 'bad request'}, status=400)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class VacancyDetail(APIView):
@@ -25,13 +25,13 @@ class VacancyDetail(APIView):
         try:
             return Vacancy.objects.get(pk=pk)
         except Vacancy.DoesNotExist as e:
-            return JsonResponse({'error': str(e)}, status=400)
+            return Response({'error': str(e)}, status=status.HTTP_404_NOT_FOUND)
 
     def get(self, request, *args, **kwargs):
         pk = self.kwargs.get('pk')
         vacancy = self.get_object(pk)
         serializer = VacancySerializer(vacancy)
-        return JsonResponse(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request, *args, **kwargs):
         pk = self.kwargs.get('pk')
@@ -39,11 +39,11 @@ class VacancyDetail(APIView):
         serializer = VacancySerializer(vacancy, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse(serializer.data)
-        return JsonResponse({'error':'bad request'}, status=400)
+            return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self,request, *args, **kwargs):
         pk = self.kwargs.get('pk')
         vacancy = self.get_object(pk)
         vacancy.delete()
-        return JsonResponse({'delete': True}, status=204)
+        return Response({'delete': True}, status=status.HTTP_202_ACCEPTED)
