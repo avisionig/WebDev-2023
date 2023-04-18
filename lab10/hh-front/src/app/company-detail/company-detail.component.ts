@@ -15,6 +15,7 @@ export class CompanyDetailComponent implements OnInit{
   newVacancySalary = 0;
   newVacancyDescription = '';
   newVacancyCompany = '';
+  newVacancyID= 0;
   id: number = 0;
   constructor(private companyService: CompaniesService ,private vacancyService: VacanciesService, private route:ActivatedRoute) {
   }
@@ -30,6 +31,9 @@ export class CompanyDetailComponent implements OnInit{
         }
       })
     }
+    this.companyService.getCompany(this.id).subscribe((data) =>{
+      this.newVacancyCompany = data.name;
+    })
     this.getVacancies(this.id);
   }
 
@@ -39,16 +43,39 @@ export class CompanyDetailComponent implements OnInit{
     })
   }
   createVacancy(){
-    if(this.newVacancyCompany.length && this.newVacancySalary &&
-      this.newVacancyDescription.length && this.newVacancyCompany){
-      this.vacancyService.createVacancy(this.newVacancyName, this.newVacancyDescription, this.newVacancySalary ,this.newVacancyCompany).
-      subscribe(vacancy =>{
-        this.vacancies.push(vacancy);
-        this.newVacancyCompany = '';
-        this.newVacancyName = '' ;
-        this.newVacancySalary = 0;
-        this.newVacancyDescription = '';
-      })
+    if(this.newVacancyID != 0){
+      this.updateVacancy(this.newVacancyName, this.newVacancyDescription, this.newVacancySalary ,this.newVacancyID);
     }
+    else{
+      if(this.newVacancyName.length && this.newVacancySalary &&
+        this.newVacancyDescription.length && this.newVacancyCompany.length) {
+        this.vacancyService.createVacancy(this.newVacancyName, this.newVacancyDescription, this.newVacancySalary, this.newVacancyCompany).subscribe(vacancy => {
+          this.vacancies.push(vacancy);
+          this.newVacancyName = '';
+          this.newVacancySalary = 0;
+          this.newVacancyDescription = '';
+        });
+      }
+    }
+  }
+  updateVacancy(vacancyName:string, vacancyDescription:string, vacancySalary:number, vacancyID:number){
+    this.vacancyService.updateVacancy(this.newVacancyName, this.newVacancyDescription, this.newVacancySalary , this.newVacancyCompany, this.newVacancyID).subscribe((data)=>{
+      for(let i of this.vacancies){
+        if(i.id == vacancyID){
+          let index = this.vacancies.indexOf(i);
+          this.vacancies[index] = data;
+          break;
+        }
+      }
+      this.newVacancyID = 0;
+      this.newVacancyName = '';
+      this.newVacancySalary = 0;
+      this.newVacancyDescription = '';
+    });
+  }
+  onDelete(vacancy_id:number){
+    this.vacancyService.deleteVacancy(vacancy_id).subscribe(data =>{
+      this.vacancies = this.vacancies.filter(vacancy => vacancy.id !== vacancy_id);
+    });
   }
 }

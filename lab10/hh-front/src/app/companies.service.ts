@@ -18,7 +18,18 @@ export class CompaniesService {
   getCompanies(): Observable<Company[]>{
     return this.client.get<Company[]>(`${this.BASE_URL}/api/companies/`)
   }
-
+  getCompany(id:number):Observable<Company>{
+    return this.client.get<Company>(`${this.BASE_URL}/api/companies/${id}`)
+  }
+  updateCompany(companyName:string, companyAddress:string, companyCity:string, companyDescription:string, companyId: number): Observable<Company>{
+    return this.client.put<Company>(`${this.BASE_URL}/api/companies/${companyId}`,
+      {
+        "name":companyName,
+        "description":companyDescription,
+        "city":companyCity,
+        "address":companyAddress,
+      });
+  }
   createCompany(companyName:string, companyAddress:string, companyCity:string, companyDescription:string): Observable<Company>{
     return this.client.post<Company>(`${this.BASE_URL}/api/companies/`,
       {
@@ -29,6 +40,6 @@ export class CompaniesService {
       })
   }
   deleteCompany(companyId:number):Observable<any>{
-    return this.client.delete(`${this.BASE_URL}/api/companies/${companyId}/`);
+    return this.client.delete(`${this.BASE_URL}/api/companies/${companyId}`);
   }
 }

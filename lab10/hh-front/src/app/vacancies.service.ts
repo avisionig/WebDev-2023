@@ -24,6 +24,14 @@ export class VacanciesService {
       })
   }
   deleteVacancy(id:number):Observable<any>{
-    return this.client.delete(`${this.BASE_URL}/api/vacancies/${id}/`);
+    return this.client.delete(`${this.BASE_URL}/api/vacancies/${id}`);
+  }
+  updateVacancy(vacancyName:string, vacancyDescription:string, vacancySalary:number, vacancyCompany: string, vacancyID:number):Observable<Vacancy>{
+    return this.client.put<Vacancy>(`${this.BASE_URL}/api/vacancies/${vacancyID}`, {
+      'name':vacancyName,
+      'description': vacancyDescription,
+      'salary':vacancySalary,
+      'company':vacancyCompany,
+    });
   }
 }
